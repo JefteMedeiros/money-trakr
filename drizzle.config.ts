@@ -1,11 +1,9 @@
-import type { Config } from "drizzle-kit";
-
 export default {
-	schema: ["./src/db/schemas/users.ts", "./src/db/schemas/expenses.ts"],
-	out: "./migrations",
-	driver: "turso",
-	dbCredentials: {
-		url: process.env.TURSO_CONNECTION_URL!,
-		authToken: process.env.TURSO_AUTH_TOKEN!,
-	},
-} satisfies Config;
+  schema: ["./src/db/schemas/auth.ts", "./src/db/schemas/expenses.ts"],
+  out: "./migrations",
+  driver: "d1-http",
+  dbCredentials: {
+    url: process.env.TURSO_CONNECTION_URL!,
+    authToken: process.env.TURSO_AUTH_TOKEN!,
+  },
+};

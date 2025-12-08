@@ -1,5 +1,6 @@
 import { and, eq, like } from "drizzle-orm";
 import { redirect } from "next/navigation";
+import { type Category } from "@/@types/expense";
 import { auth } from "@/auth";
 import { expenses } from "@/db/schemas/expenses";
 import { db } from "../db/db";
@@ -14,7 +15,7 @@ export async function getExpense(queryParams: string) {
 	const mutableParams = new URLSearchParams(queryParams);
 
 	const name = mutableParams.get("name");
-	const category = mutableParams.get("category");
+	const category = mutableParams.get("category") as Category | null;
 	const isUnique = mutableParams.get("type") === "unique";
 
 	const results = await db

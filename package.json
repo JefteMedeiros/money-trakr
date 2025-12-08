@@ -11,7 +11,6 @@
     "migrate": "bun ./migrations/index.ts"
   },
   "dependencies": {
-    "@auth/drizzle-adapter": "^1.11.1",
     "@hookform/resolvers": "^5.2.2",
     "@libsql/client": "^0.15.15",
     "@radix-ui/react-alert-dialog": "^1.1.15",
@@ -29,7 +28,6 @@
     "drizzle-orm": "^0.45.0",
     "lucide-react": "^0.556.0",
     "next": "16.0.7",
-    "next-auth": "5.0.0-beta.30",
     "react": "19.2.1",
     "react-dom": "19.2.1",
     "react-hook-form": "^7.68.0",
