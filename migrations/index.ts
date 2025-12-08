@@ -1,5 +1,5 @@
-import { resolve } from 'node:path'
-import { db } from '../db/db'
-import { migrate } from 'drizzle-orm/libsql/migrator'
+import { resolve } from "node:path";
+import { migrate } from "drizzle-orm/libsql/migrator";
+import { db } from "../db/db";
 
-await migrate(db, { migrationsFolder: resolve(__dirname, '../migrations') })
+await migrate(db, { migrationsFolder: resolve(__dirname, "../migrations") });
