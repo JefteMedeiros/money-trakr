@@ -7,9 +7,13 @@ import { expenseSchema } from "@/@types/expense";
 import { db } from "@/db/db";
 import { expenses, type SelectExpense } from "@/db/schemas/expenses";
 import { authClient } from "@/lib/auth-client";
+import { auth } from "@/lib/auth";
+import { headers } from "next/headers";
 
 export async function editExpense(prevState: any, formData: SelectExpense) {
-  const { data: session } = await authClient.getSession();
+  const session = await auth.api.getSession({
+    headers: await headers(),
+  });
 
   if (!session) {
     return redirect("/signin");

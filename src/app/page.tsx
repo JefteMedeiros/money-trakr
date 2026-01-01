@@ -1,5 +1,5 @@
 import { Suspense } from "react";
-import { getExpense } from "@/actions/get_expense";
+import { getExpenseList } from "@/actions/get_expense_list";
 import { ExpenseResume } from "@/components/expense-resume";
 import { ExpenseTable } from "@/components/expense-table";
 import { Logo } from "@/components/logo";
@@ -7,6 +7,8 @@ import { ProfileCard } from "@/components/profile-card";
 import { Skeleton } from "@/components/ui/skeleton";
 import { authClient } from "@/lib/auth-client";
 import { redirect } from "next/navigation";
+import { auth } from "@/lib/auth";
+import { headers } from "next/headers";
 
 function Loading() {
   return (
@@ -31,9 +33,13 @@ export default async function Page(props: {
   const searchParams = await props.searchParams;
   const queryParams = new URLSearchParams(searchParams as any).toString();
 
-  // const expenses = await getExpense(queryParams);
+  const session = await auth.api.getSession({
+    headers: await headers(),
+  });
 
-  const { data: session } = await authClient.getSession();
+  if (!session) return redirect("/signin");
+
+  const expenses = await getExpenseList(queryParams);
 
   return (
     <div className="bg-gray-800 min-h-dvh w-full">
@@ -45,11 +51,11 @@ export default async function Page(props: {
           </Suspense>
         </div>
       </header>
-      {/*<ExpenseResume totalExpenses={expenses} />*/}
+      <ExpenseResume totalExpenses={expenses} />
       <main className="max-w-[90%] xl:max-w-[1260px] mx-auto mt-16">
-        {/*<Suspense key={queryParams} fallback={<Loading />}>
+        <Suspense key={queryParams} fallback={<Loading />}>
           <ExpenseTable queryParams={queryParams} />
-        </Suspense>*/}
+        </Suspense>
       </main>
     </div>
   );

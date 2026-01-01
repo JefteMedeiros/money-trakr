@@ -5,10 +5,13 @@ import { redirect } from "next/navigation";
 import { type Expense, expenseSchema } from "@/@types/expense";
 import { db } from "@/db/db";
 import { expenses } from "@/db/schemas/expenses";
-import { authClient } from "@/lib/auth-client";
+import { auth } from "@/lib/auth";
+import { headers } from "next/headers";
 
 export async function addExpense(prevState: any, formData: Expense) {
-  const { data: session } = await authClient.getSession();
+  const session = await auth.api.getSession({
+    headers: await headers(),
+  });
 
   if (!session) {
     return redirect("/signin");

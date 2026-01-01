@@ -3,10 +3,13 @@ import { redirect } from "next/navigation";
 import { type Category } from "@/@types/expense";
 import { expenses } from "@/db/schemas/expenses";
 import { db } from "../db/db";
-import { authClient } from "@/lib/auth-client";
+import { auth } from "@/lib/auth";
+import { headers } from "next/headers";
 
-export async function getExpense(queryParams: string) {
-  const { data: session } = await authClient.getSession();
+export async function getExpenseList(queryParams: string) {
+  const session = await auth.api.getSession({
+    headers: await headers(),
+  });
 
   if (!session) {
     return redirect("/signin");
