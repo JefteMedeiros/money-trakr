@@ -1,25 +1,28 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import { Input as BaseInput } from "@/components/ui/input"
-import { cn } from "@/lib/utils"
-import type { GlassCustomization } from "@/lib/glass-utils"
-import { hoverEffects, type HoverEffect } from "@/lib/hover-effects"
+import * as React from "react";
+import { Input as BaseInput } from "@/components/ui/input";
+import { cn } from "@/lib/utils";
+import type { GlassCustomization } from "@/lib/glass-utils";
+import { hoverEffects, type HoverEffect } from "@/lib/hover-effects";
 
-export interface InputProps extends Omit<React.ComponentProps<typeof BaseInput>, "glass"> {
-  icon?: React.ReactNode
-  error?: boolean
-  hover?: HoverEffect
-  glass?: GlassCustomization
+export interface InputProps extends Omit<
+  React.ComponentProps<typeof BaseInput>,
+  "glass"
+> {
+  icon?: React.ReactNode;
+  error?: boolean;
+  hover?: HoverEffect;
+  glass?: GlassCustomization;
 }
 
 /**
  * Glass UI Input - A beautifully designed input component with glassy effects
  * Built on top of the base Input component with enhanced visual styling
- * 
+ *
  * @example
  * ```tsx
- * <Input 
+ * <Input
  *   glass={{
  *     color: "rgba(255, 255, 255, 0.15)",
  *     blur: 15,
@@ -30,7 +33,18 @@ export interface InputProps extends Omit<React.ComponentProps<typeof BaseInput>,
  * ```
  */
 export const Input = React.forwardRef<HTMLInputElement, InputProps>(
-  ({ className, variant = "glass", icon, error, hover = "none", glass, ...props }, ref) => {
+  (
+    {
+      className,
+      variant = "glass",
+      icon,
+      error,
+      hover = "none",
+      glass,
+      ...props
+    },
+    ref,
+  ) => {
     return (
       <div className="relative">
         {icon && (
@@ -48,13 +62,12 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
             error && "border-destructive focus-visible:ring-destructive",
             "transition-all duration-200 focus-visible:scale-[1.02]",
             hoverEffects({ hover }),
-            className
+            className,
           )}
           {...props}
         />
       </div>
-    )
-  }
-)
-Input.displayName = "Input"
-
+    );
+  },
+);
+Input.displayName = "Input";

@@ -13,7 +13,6 @@ export function moneyFormatter(value: number) {
 }
 
 const expenseExamples = [
-  "Ex: Escola do meu filho",
   "Ex: Compras do mês",
   "Ex: Conta de luz",
   "Ex: Conta de água",
@@ -21,7 +20,6 @@ const expenseExamples = [
   "Ex: Conta de telefone",
   "Ex: Conta de celular",
   "Ex: Conta de cartão de crédito",
-  "Ex: Conta de cartão de débito",
   "Ex: Conta de supermercado",
   "Ex: Conta de farmácia",
   "Ex: Conta de combustível",

@@ -1,12 +1,16 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import { Avatar as BaseAvatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar"
-import { cn } from "@/lib/utils"
+import * as React from "react";
+import {
+  Avatar as BaseAvatar,
+  AvatarImage,
+  AvatarFallback,
+} from "@/components/ui/avatar";
+import { cn } from "@/lib/utils";
 
 export interface AvatarProps extends React.ComponentProps<typeof BaseAvatar> {
-  glow?: boolean
-  size?: "sm" | "md" | "lg"
+  glow?: boolean;
+  size?: "sm" | "md" | "lg";
 }
 
 /**
@@ -20,8 +24,8 @@ export const Avatar = React.forwardRef<
     sm: "h-8 w-8",
     md: "h-10 w-10",
     lg: "h-16 w-16",
-  }
-  
+  };
+
   return (
     <BaseAvatar
       ref={ref}
@@ -29,13 +33,12 @@ export const Avatar = React.forwardRef<
         sizeClasses[size],
         glow && "ring-2 ring-purple-500/30 shadow-lg shadow-purple-500/20",
         "transition-all duration-200",
-        className
+        className,
       )}
       {...props}
     />
-  )
-})
-Avatar.displayName = "Avatar"
+  );
+});
+Avatar.displayName = "Avatar";
 
-export { AvatarImage, AvatarFallback }
-
+export { AvatarImage, AvatarFallback };

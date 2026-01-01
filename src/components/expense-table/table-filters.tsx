@@ -7,7 +7,7 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select";
+} from "@/components/ui/glass/select";
 import { AddExpense } from "../add-expense";
 
 export function TableFilters() {
@@ -47,7 +47,6 @@ export function TableFilters() {
         placeholder="Filtrar por nome"
         value={searchByName}
         onChange={handleSearchByName}
-        className="bg-gray-900 w-1/4 text-ellipsis text-white h-12 border-none focus-visible:ring-offset-1 focus-visible:ring-2 focus-visible:ring-offset-gray-800  focus-visible:ring-purple-400"
       />
       <Select
         value={category ?? ""}
@@ -60,10 +59,10 @@ export function TableFilters() {
         }}
         defaultValue="all"
       >
-        <SelectTrigger className="bg-gray-900 w-1/4 text-white h-12 border-none focus:ring-offset-1 focus:ring-2 focus:ring-offset-gray-800  focus:ring-purple-400">
+        <SelectTrigger className="w-1/4">
           <SelectValue placeholder="Filtrar por categoria" />
         </SelectTrigger>
-        <SelectContent className="bg-gray-900 text-white border-none">
+        <SelectContent>
           <SelectItem value="all">Todos</SelectItem>
           <SelectItem value="other">Outros</SelectItem>
           <SelectItem value="entertainment">Entretenimento</SelectItem>
@@ -85,10 +84,10 @@ export function TableFilters() {
         }}
         defaultValue="all"
       >
-        <SelectTrigger className="bg-gray-900 w-1/4 text-white h-12 border-none focus:ring-offset-1 focus:ring-2 focus:ring-offset-gray-800  focus:ring-purple-400">
+        <SelectTrigger className="w-1/4">
           <SelectValue placeholder="Filtrar por tipo" />
         </SelectTrigger>
-        <SelectContent className="bg-gray-900 text-white border-none">
+        <SelectContent>
           <SelectItem value="all">Todas</SelectItem>
           <SelectItem value="unique">Despesa única</SelectItem>
           <SelectItem value="recurring">Despesa recorrente</SelectItem>

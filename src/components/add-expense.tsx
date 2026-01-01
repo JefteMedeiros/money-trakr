@@ -6,7 +6,8 @@ import { useForm } from "react-hook-form";
 import { type Category, type Expense, expenseSchema } from "@/@types/expense";
 import { addExpense } from "@/actions/add_expense";
 import { ExpenseForm } from "@/components/expense-form";
-import { Button } from "@/components/ui/glass/button";
+import { SubmitButton } from "./submit-button";
+import { Form } from "./ui/form";
 import {
   Dialog,
   DialogContent,
@@ -15,9 +16,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/glass/dialog";
-import { generateExpenseExampleMessage } from "@/lib/utils";
-import { SubmitButton } from "./submit-button";
-import { Form } from "./ui/form";
+import { Button } from "@/components/ui/glass/button";
 
 const initialState = {
   message: "",
@@ -66,11 +65,11 @@ export function AddExpense() {
   return (
     <Dialog open={open} onOpenChange={setIsOpen}>
       <DialogTrigger asChild>
-        <Button className="hover:bg-purple-400 bg-purple-500 px-4 py-2 h-12 w-1/4">
+        <Button>
           <span className="truncate">Adicionar despesa</span>
         </Button>
       </DialogTrigger>
-      <DialogContent className="bg-gray-800 max-w-[90%] xl:max-w-lg text-white border-none">
+      <DialogContent>
         <DialogHeader className="items-start">
           <DialogTitle>Adicionar despesa</DialogTitle>
           <DialogDescription className="text-white text-sm font-extralight">

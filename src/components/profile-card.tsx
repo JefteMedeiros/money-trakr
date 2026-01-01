@@ -24,10 +24,7 @@ export function ProfileCard() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button
-          className="flex items-center gap-2 bg-gray-900 hover:bg-gray-700 hover:text-white px-3 text-white h-12 border-none focus-visible:ring-offset-1 focus-visible:ring-2 focus-visible:ring-offset-gray-800  focus-visible:ring-purple-400"
-          variant="outline"
-        >
+        <Button className="flex items-center gap-2 px-3 h-12">
           <Avatar>
             <AvatarImage
               src={session?.user.image as string}
@@ -42,15 +39,10 @@ export function ProfileCard() {
           )}
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent
-        align="start"
-        side="bottom"
-        className="w-56 bg-gray-900 border-gray-700 text-white"
-      >
+      <DropdownMenuContent align="start" side="bottom" className="w-56">
         <DropdownMenuLabel>Minha conta</DropdownMenuLabel>
-        <DropdownMenuSeparator className="bg-gray-700" />
+        <DropdownMenuSeparator />
         <DropdownMenuItem
-          className="hover:cursor-pointer focus:bg-gray-700 focus:text-white"
           onClick={async () => {
             await authClient.signOut();
             window.location.href = "/signin";
