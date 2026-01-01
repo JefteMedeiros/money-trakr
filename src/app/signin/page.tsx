@@ -1,8 +1,10 @@
+"use client";
+
 import Image from "next/image";
-import { redirect } from "next/navigation";
 import { Logo } from "@/components/logo";
 import { authClient } from "@/lib/auth-client";
-import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { useRouter } from "next/navigation";
 
 const providers = [
   {
@@ -11,16 +13,14 @@ const providers = [
   },
 ];
 
-export default async function SignIn(props: {
-  params: Promise<{ slug: string }>;
-  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
-}) {
-  const searchParams = await props.searchParams;
-  const { data: session } = await authClient.getSession();
+export default function SignIn() {
+  const router = useRouter();
 
-  if (session) return redirect("/");
+  const { data: session, isPending, error } = authClient.useSession();
 
-  const error = searchParams?.error as string | undefined;
+  if (session) {
+    router.push("/");
+  }
 
   return (
     <main className="bg-gray-900 w-screen h-screen flex flex-col items-center">
@@ -31,10 +31,13 @@ export default async function SignIn(props: {
         </p>
         <div className="flex flex-col w-full gap-2 bg-gray-800 p-4 rounded-md mt-6">
           {providers.map((provider) => (
-            <Link
+            <Button
+              className="gap-2 hover:cursor-pointer"
+              disabled={isPending}
               key={provider.id}
-              href={`/api/auth/signin/${provider.id}`}
-              className="flex w-full items-center gap-4 justify-start bg-gray-900 px-4 h-12 rounded-md hover:bg-gray-700 hover:cursor-pointer transition-colors"
+              onClick={async () => {
+                await authClient.signIn.social({ provider: provider.id });
+              }}
             >
               <Image
                 src={`https://authjs.dev/img/providers/${provider.id}.svg`}
@@ -43,16 +46,9 @@ export default async function SignIn(props: {
                 height={24}
               />
               <span>Entrar com {provider.name}</span>
-            </Link>
+            </Button>
           ))}
         </div>
-        {error && (
-          <p className="mt-6 text-center text-red-400">
-            {error === "OAuthAccountNotLinked"
-              ? "O e-mail utilizado nesta opção já foi associado a uma conta"
-              : "Ocorreu um erro ao tentar fazer login"}
-          </p>
-        )}
       </div>
     </main>
   );

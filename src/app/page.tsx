@@ -31,13 +31,9 @@ export default async function Page(props: {
   const searchParams = await props.searchParams;
   const queryParams = new URLSearchParams(searchParams as any).toString();
 
-  const expenses = await getExpense(queryParams);
+  // const expenses = await getExpense(queryParams);
 
-  const { data: session, error } = await authClient.getSession();
-
-  if (!session) {
-    return redirect("https://www.google.com");
-  }
+  const { data: session } = await authClient.getSession();
 
   return (
     <div className="bg-gray-800 min-h-dvh w-full">
@@ -49,11 +45,11 @@ export default async function Page(props: {
           </Suspense>
         </div>
       </header>
-      <ExpenseResume totalExpenses={expenses} />
+      {/*<ExpenseResume totalExpenses={expenses} />*/}
       <main className="max-w-[90%] xl:max-w-[1260px] mx-auto mt-16">
-        <Suspense key={queryParams} fallback={<Loading />}>
+        {/*<Suspense key={queryParams} fallback={<Loading />}>
           <ExpenseTable queryParams={queryParams} />
-        </Suspense>
+        </Suspense>*/}
       </main>
     </div>
   );
