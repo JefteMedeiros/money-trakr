@@ -12,9 +12,11 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Button } from "./ui/button";
+import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
+import { Skeleton } from "./ui/skeleton";
 
 export function ProfileCard() {
-  const { data: session } = authClient.useSession();
+  const { data: session, isPending } = authClient.useSession();
 
   return (
     <DropdownMenu>
@@ -23,16 +25,18 @@ export function ProfileCard() {
           className="flex items-center gap-2 bg-gray-900 hover:bg-gray-700 hover:text-white px-3 text-white h-12 border-none focus-visible:ring-offset-1 focus-visible:ring-2 focus-visible:ring-offset-gray-800  focus-visible:ring-purple-400"
           variant="outline"
         >
-          <div className="w-8 h-8 md:w-10 md:h-10 relative">
-            <Image
-              className="rounded-full"
-              referrerPolicy="no-referrer"
+          <Avatar>
+            <AvatarImage
               src={session?.user.image as string}
-              fill
-              alt="User"
+              alt={session?.user.name.slice(0, 1)}
             />
-          </div>
-          <span className="text-md">{session?.user?.name}</span>
+            <AvatarFallback>{session?.user.name?.charAt(0)}</AvatarFallback>
+          </Avatar>
+          {isPending ? (
+            <Skeleton className="h-5 w-20 rounded-md" />
+          ) : (
+            <span className="text-md">{session?.user?.name}</span>
+          )}
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent
