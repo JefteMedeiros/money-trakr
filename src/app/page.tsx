@@ -1,12 +1,12 @@
-import { redirect } from "next/navigation";
 import { Suspense } from "react";
 import { getExpense } from "@/actions/get_expense";
-import { auth } from "@/auth";
 import { ExpenseResume } from "@/components/expense-resume";
 import { ExpenseTable } from "@/components/expense-table";
 import { Logo } from "@/components/logo";
 import { ProfileCard } from "@/components/profile-card";
 import { Skeleton } from "@/components/ui/skeleton";
+import { authClient } from "@/lib/auth-client";
+import { redirect } from "next/navigation";
 
 function Loading() {
   return (
@@ -33,8 +33,11 @@ export default async function Page(props: {
 
   const expenses = await getExpense(queryParams);
 
-  const session = await auth();
-  if (!session) return redirect("/signin");
+  const { data: session, error } = await authClient.getSession();
+
+  if (!session) {
+    return redirect("https://www.google.com");
+  }
 
   return (
     <div className="bg-gray-800 min-h-dvh w-full">

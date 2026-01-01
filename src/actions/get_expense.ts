@@ -1,36 +1,36 @@
 import { and, eq, like } from "drizzle-orm";
 import { redirect } from "next/navigation";
 import { type Category } from "@/@types/expense";
-import { auth } from "@/auth";
 import { expenses } from "@/db/schemas/expenses";
 import { db } from "../db/db";
+import { authClient } from "@/lib/auth-client";
 
 export async function getExpense(queryParams: string) {
-	const session = await auth();
+  const { data: session } = await authClient.getSession();
 
-	if (!session) {
-		return redirect("/signin");
-	}
+  if (!session) {
+    return redirect("/signin");
+  }
 
-	const mutableParams = new URLSearchParams(queryParams);
+  const mutableParams = new URLSearchParams(queryParams);
 
-	const name = mutableParams.get("name");
-	const category = mutableParams.get("category") as Category | null;
-	const isUnique = mutableParams.get("type") === "unique";
+  const name = mutableParams.get("name");
+  const category = mutableParams.get("category") as Category | null;
+  const isUnique = mutableParams.get("type") === "unique";
 
-	const results = await db
-		.select()
-		.from(expenses)
-		.where(
-			and(
-				eq(expenses.userId, session.user.id),
-				name && name.length > 0 ? like(expenses.name, `%${name}%`) : undefined,
-				category && category.length > 0
-					? eq(expenses.category, category)
-					: undefined,
-				isUnique ? eq(expenses.isUnique, true) : undefined,
-			),
-		);
+  const results = await db
+    .select()
+    .from(expenses)
+    .where(
+      and(
+        eq(expenses.userId, session.user.id),
+        name && name.length > 0 ? like(expenses.name, `%${name}%`) : undefined,
+        category && category.length > 0
+          ? eq(expenses.category, category)
+          : undefined,
+        isUnique ? eq(expenses.isUnique, true) : undefined,
+      ),
+    );
 
-	return results;
+  return results;
 }
