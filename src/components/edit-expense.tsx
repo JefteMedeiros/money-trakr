@@ -14,7 +14,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/components/ui/dialog";
+} from "@/components/ui/glass/dialog";
 import type { SelectExpense } from "@/db/schemas/expenses";
 import { generateExpenseExampleMessage } from "@/lib/utils";
 import { SubmitButton } from "./submit-button";
@@ -49,7 +49,12 @@ export function EditExpense({ expense }: Props) {
 
   const onSubmit = (data: Expense) => {
     startTransition(async () => {
-      formAction({ ...data, id: expense.id, createdAt: expense.createdAt, userId: expense.userId });
+      formAction({
+        ...data,
+        id: expense.id,
+        createdAt: expense.createdAt,
+        userId: expense.userId,
+      });
     });
   };
 

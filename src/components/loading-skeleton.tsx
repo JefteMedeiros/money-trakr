@@ -1,4 +1,4 @@
-import { Skeleton } from "@/components/ui/skeleton";
+import { Skeleton } from "@/components/ui/glass/skeleton";
 
 export function ExpenseTableSkeleton() {
   return (

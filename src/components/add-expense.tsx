@@ -6,7 +6,7 @@ import { useForm } from "react-hook-form";
 import { type Category, type Expense, expenseSchema } from "@/@types/expense";
 import { addExpense } from "@/actions/add_expense";
 import { ExpenseForm } from "@/components/expense-form";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/glass/button";
 import {
   Dialog,
   DialogContent,
@@ -14,7 +14,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/components/ui/dialog";
+} from "@/components/ui/glass/dialog";
 import { generateExpenseExampleMessage } from "@/lib/utils";
 import { SubmitButton } from "./submit-button";
 import { Form } from "./ui/form";

@@ -1,7 +1,6 @@
 "use client";
 
 import { LogOut } from "lucide-react";
-import Image from "next/image";
 import { authClient } from "@/lib/auth-client";
 import {
   DropdownMenu,
@@ -10,10 +9,14 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { Button } from "./ui/button";
-import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
-import { Skeleton } from "./ui/skeleton";
+} from "@/components/ui/glass/dropdown-menu";
+import { Button } from "@/components/ui/glass/button";
+import {
+  Avatar,
+  AvatarFallback,
+  AvatarImage,
+} from "@/components/ui/glass/avatar";
+import { Skeleton } from "@/components/ui/glass/skeleton";
 
 export function ProfileCard() {
   const { data: session, isPending } = authClient.useSession();
