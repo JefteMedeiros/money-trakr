@@ -42,10 +42,10 @@ export function DeleteExpense({ id }: Props) {
           <Trash />
         </Button>
       </AlertDialogTrigger>
-      <AlertDialogContent className="bg-gray-800 max-w-[90%] xl:max-w-lg text-white border-none">
+      <AlertDialogContent className="bg-gray-800 max-w-[90%] xl:max-w-lg border-none">
         <AlertDialogHeader className="items-start">
           <AlertDialogTitle>Deletar despesa</AlertDialogTitle>
-          <AlertDialogDescription className="text-white text-sm font-extralight">
+          <AlertDialogDescription className="text-sm font-extralight">
             Tem certeza que deseja deletar esta despesa?
           </AlertDialogDescription>
         </AlertDialogHeader>

@@ -17,7 +17,7 @@ export default async function SignIn() {
       <div className="max-w-80 w-full">
         <div className="flex flex-col items-center gap-3 mb-5">
           <Logo />
-          <p className="text-center text-white">
+          <p className="text-center">
             Para continuar, faça login com uma das opções abaixo
           </p>
         </div>

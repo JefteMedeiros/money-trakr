@@ -29,7 +29,7 @@ export function ExpenseForm() {
           <FormItem>
             <FormControl>
               <Input
-                className="h-10 text-white"
+                className="h-10"
                 placeholder="Nome"
                 maxLength={40}
                 {...field}
@@ -46,7 +46,7 @@ export function ExpenseForm() {
           <FormItem>
             <Select onValueChange={field.onChange} defaultValue={field.value}>
               <FormControl>
-                <SelectTrigger className="h-10 text-white">
+                <SelectTrigger className="h-10">
                   <SelectValue placeholder="Selecione uma categoria" />
                 </SelectTrigger>
               </FormControl>
@@ -72,7 +72,7 @@ export function ExpenseForm() {
             <FormControl>
               <Input
                 step="any"
-                className="h-10 text-white"
+                className="h-10"
                 type="number"
                 placeholder="Valor"
                 {...form.register("value", {

@@ -75,7 +75,7 @@ export function AddExpense() {
       <DialogContent>
         <DialogHeader className="items-start">
           <DialogTitle>Adicionar despesa</DialogTitle>
-          <DialogDescription className="text-white text-sm font-extralight">
+          <DialogDescription className="text-sm font-extralight">
             {expenseExample}
           </DialogDescription>
         </DialogHeader>

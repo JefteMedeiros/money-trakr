@@ -58,10 +58,10 @@ export function EditPlannedExpenses({
           <Pencil className="h-4 w-4" />
         </Button>
       </DialogTrigger>
-      <DialogContent className="bg-gray-800 max-w-[90%] xl:max-w-lg text-white border-none">
+      <DialogContent className="bg-gray-800 max-w-[90%] xl:max-w-lg border-none">
         <DialogHeader className="items-start">
           <DialogTitle>{greetingMessage}</DialogTitle>
-          <DialogDescription className="text-white text-sm font-extralight">
+          <DialogDescription className="text-sm font-extralight">
             Adicione no campo abaixo o quanto você planeja gastar
           </DialogDescription>
         </DialogHeader>
@@ -69,7 +69,7 @@ export function EditPlannedExpenses({
           type="number"
           defaultValue={plannedExpenses}
           onChange={handleChangeValue}
-          className="bg-gray-900 text-white h-12 border-none focus-visible:ring-offset-1 focus-visible:ring-2 focus-visible:ring-offset-gray-800  focus-visible:ring-purple-400"
+          className="bg-gray-900 h-12 border-none focus-visible:ring-offset-1 focus-visible:ring-2 focus-visible:ring-offset-gray-800  focus-visible:ring-purple-400"
         />
         <Button
           onClick={handleSavePlannedExpenses}

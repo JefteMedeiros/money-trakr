@@ -49,17 +49,17 @@ export function DataTable<TData, TValue>({
   });
 
   return (
-    <div className="rounded-md space-y-3.5">
+    <div className="space-y-3.5">
       <TableFilters />
-      <div className="overflow-x-auto">
-        <Table className="text-white min-w-160 w-full">
+      <div className="overflow-x-auto p-2">
+        <Table className="min-w-160 w-full">
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (
               <TableRow key={headerGroup.id}>
                 {headerGroup.headers.map((header) => {
                   return (
                     <TableHead
-                      className="text-white first:rounded-tl-[5px] last:rounded-tr-[5px]"
+                      className="first:rounded-tl-[5px] last:rounded-tr-[5px]"
                       key={header.id}
                     >
                       {header.isPlaceholder
