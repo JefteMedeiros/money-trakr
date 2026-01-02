@@ -8,7 +8,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/glass/input";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/glass/radio-group";
+import { Switch } from "@/components/ui/glass/switch";
 import {
   Select,
   SelectContent,
@@ -29,7 +29,7 @@ export function ExpenseForm() {
           <FormItem>
             <FormControl>
               <Input
-                className="bg-gray-900 text-white h-12 border-none focus-visible:ring-offset-1 focus-visible:ring-2 focus-visible:ring-offset-gray-800  focus-visible:ring-purple-400"
+                className="h-10 text-white"
                 placeholder="Nome"
                 maxLength={40}
                 {...field}
@@ -46,11 +46,11 @@ export function ExpenseForm() {
           <FormItem>
             <Select onValueChange={field.onChange} defaultValue={field.value}>
               <FormControl>
-                <SelectTrigger className="bg-gray-900 text-white h-12 border-none focus:ring-offset-1 focus:ring-2 focus:ring-offset-gray-800  focus:ring-purple-400">
+                <SelectTrigger className="h-10 text-white">
                   <SelectValue placeholder="Selecione uma categoria" />
                 </SelectTrigger>
               </FormControl>
-              <SelectContent className="bg-gray-900 text-white border-none">
+              <SelectContent>
                 <SelectItem value="other">Outros</SelectItem>
                 <SelectItem value="entertainment">Entretenimento</SelectItem>
                 <SelectItem value="food">Alimentação</SelectItem>
@@ -72,7 +72,7 @@ export function ExpenseForm() {
             <FormControl>
               <Input
                 step="any"
-                className="bg-gray-900 text-white h-12 border-none focus-visible:ring-offset-1 focus-visible:ring-2 focus-visible:ring-offset-gray-800  focus-visible:ring-purple-400"
+                className="h-10 text-white"
                 type="number"
                 placeholder="Valor"
                 {...form.register("value", {
@@ -89,32 +89,15 @@ export function ExpenseForm() {
         control={form.control}
         name="isUnique"
         render={({ field }) => (
-          <FormItem className="space-y-3">
-            <FormLabel className="text-white">Tipo de despesa</FormLabel>
+          <FormItem className="flex items-center gap-2s space-y-0">
             <FormControl>
-              <RadioGroup
-                onValueChange={(value) => field.onChange(value === "true")}
-                defaultValue={field.value ? "true" : "false"}
-                className="flex flex-col space-y-1"
-              >
-                <FormItem className="flex items-center space-x-3 space-y-0">
-                  <FormControl>
-                    <RadioGroupItem className="border-gray-900" value="true" />
-                  </FormControl>
-                  <FormLabel className="font-normal text-white">
-                    Despesa única
-                  </FormLabel>
-                </FormItem>
-                <FormItem className="flex items-center space-x-3 space-y-0">
-                  <FormControl>
-                    <RadioGroupItem className="border-gray-900" value="false" />
-                  </FormControl>
-                  <FormLabel className="font-normal text-white">
-                    Despesa recorrente
-                  </FormLabel>
-                </FormItem>
-              </RadioGroup>
+              <Switch
+                variant="glass"
+                checked={field.value}
+                onCheckedChange={field.onChange}
+              />
             </FormControl>
+            <FormLabel className="text-white">Despesa única</FormLabel>
             <FormMessage />
           </FormItem>
         )}

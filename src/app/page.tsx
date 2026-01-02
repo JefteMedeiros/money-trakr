@@ -30,13 +30,13 @@ export default async function Page(props: {
 
   return (
     <div className="min-h-dvh w-full bg-zinc-900">
-      <header className="pt-12 pb-24 bg-gray-900">
+      <header className="pt-12 pb-24 bg-zinc-900">
         <div className="flex items-center justify-between max-w-[90%] xl:max-w-315 w-full mx-auto">
           <Logo />
           <Suspense fallback={<ProfileCardSkeleton />}>
             <div className="flex items-center gap-2">
-              <ProfileCard />
               <ModeToggle />
+              <ProfileCard />
             </div>
           </Suspense>
         </div>

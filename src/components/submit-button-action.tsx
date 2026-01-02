@@ -14,7 +14,6 @@ export function SubmitButtonAction({ text = "Enviar", id }: Props) {
 
   return (
     <Button
-      variant="destructive"
       form={id}
       className="w-full"
       disabled={pending}

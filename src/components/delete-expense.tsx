@@ -56,7 +56,7 @@ export function DeleteExpense({ id }: Props) {
             }}
             asChild
           >
-            <Button variant="outline" className="w-1/2">
+            <Button variant="ghost" className="w-1/2 border-none">
               Não
             </Button>
           </AlertDialogCancel>

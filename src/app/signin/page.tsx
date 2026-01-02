@@ -13,7 +13,7 @@ export default async function SignIn() {
   if (session) return redirect("/");
 
   return (
-    <main className="bg-gray-900 w-screen h-screen flex flex-col justify-center items-center">
+    <main className="bg-zinc-900 w-screen h-screen flex flex-col justify-center items-center">
       <div className="max-w-80 w-full">
         <div className="flex flex-col items-center gap-3 mb-5">
           <Logo />

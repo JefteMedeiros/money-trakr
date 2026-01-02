@@ -78,7 +78,7 @@ export function ExpenseStats({ totalExpenses }: Props) {
         <CardContent className="flex flex-col items-start justify-center gap-1.5">
           <div className="flex items-center justify-between w-full">
             <p className="text-sm text-muted-foreground">Total restante</p>
-            <div className="rounded-full bg-destructive/10 p-2">
+            <div className="rounded-full bg-emerald-500/10 p-2">
               <TrendingUp className="h-4 w-4 text-emerald-500" />
             </div>
           </div>
