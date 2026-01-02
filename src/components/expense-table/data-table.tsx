@@ -51,7 +51,7 @@ export function DataTable<TData, TValue>({
   return (
     <div className="space-y-3.5">
       <TableFilters />
-      <div className="overflow-x-auto p-2">
+      <div className="overflow-x-auto rounded-lg">
         <Table className="min-w-160 w-full">
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (

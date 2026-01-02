@@ -1,6 +1,6 @@
 import { Suspense } from "react";
 import { getExpenseList } from "@/actions/get_expense_list";
-import { ExpenseStats } from "@/components/expense-resume";
+import { ExpenseStats } from "@/components/expense-stats";
 import { ExpenseTable } from "@/components/expense-table";
 import { Logo } from "@/components/logo";
 import { ProfileCard } from "@/components/profile-card";
@@ -29,8 +29,11 @@ export default async function Page(props: {
   const expenses = await getExpenseList(queryParams);
 
   return (
-    <div className="min-h-dvh w-full bg-stone-300 dark:bg-zinc-900">
-      <header className="pt-6 md:pt-12 pb-16 md:pb-24 bg-stone-300 dark:bg-zinc-900">
+    <div className="min-h-dvh w-full relative">
+      {/* Background with blur */}
+      <div className="fixed inset-0 -z-10 bg-[url('/bg-shape-light.png')] dark:bg-[url('/bg-shape.jpg')] bg-cover bg-center bg-no-repeat blur-3xl" />
+
+      <header className="pt-6 md:pt-12 pb-16 md:pb-24">
         <div className="flex items-center justify-between max-w-[90%] xl:max-w-315 w-full mx-auto gap-2">
           <Logo />
           <Suspense fallback={<ProfileCardSkeleton />}>

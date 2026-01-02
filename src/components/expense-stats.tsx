@@ -30,7 +30,7 @@ export function ExpenseStats({ totalExpenses }: Props) {
   const remainingValue = plannedExpenseValue - totalSpent;
 
   return (
-    <nav className="snap-x snap-mandatory flex gap-4 max-w-[90%] xl:max-w-315 -my-12 mx-auto overflow-auto custom-scroll py-3 px-2">
+    <nav className="snap-x snap-mandatory flex gap-4 max-w-[90%] xl:max-w-315 -my-12 mx-auto overflow-auto md:overflow-visible custom-scroll">
       <Card className="snap-start shrink-0 w-64 md:flex-1 md:w-full h-32 md:h-36">
         <CardContent className="flex flex-col items-start justify-center gap-1.5">
           <div className="flex items-center justify-between w-full">

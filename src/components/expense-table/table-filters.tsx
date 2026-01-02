@@ -110,7 +110,7 @@ function FilterControls() {
 
 export function TableFilters() {
   return (
-    <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3 px-2">
+    <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
       <div className="hidden sm:flex flex-col sm:flex-row sm:items-center gap-2">
         <FilterControls />
       </div>
