@@ -1,10 +1,10 @@
 "use client";
 
 import type { ColumnDef } from "@tanstack/react-table";
-import { ArrowUpDown } from "lucide-react";
+import { ChevronsUpDown, ChevronUp } from "lucide-react";
 import { categoryEquivalent } from "@/@types/expense";
 import type { SelectExpense } from "@/db/schemas/expenses";
-import { moneyFormatter } from "@/lib/utils";
+import { cn, moneyFormatter } from "@/lib/utils";
 import { DeleteExpense } from "../delete-expense";
 import { EditExpense } from "../edit-expense";
 import { Badge } from "../ui/glass/badge";
@@ -22,15 +22,25 @@ export const columns: ColumnDef<SelectExpense>[] = [
     },
   },
   {
-    accessorKey: "amount",
+    accessorKey: "value",
     header: ({ column }) => {
+      const sorted = column.getIsSorted();
+
       return (
         <button
-          className="flex items-center gap-2 hover:underline"
+          className="flex items-center gap-2 hover:cursor-pointer"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
           Valor
-          <ArrowUpDown className="ml-2 h-4 w-4" />
+          {sorted ? (
+            <ChevronUp
+              className={cn("ml-2 h-4 w-4 transition-all", {
+                "rotate-180": sorted === "asc",
+              })}
+            />
+          ) : (
+            <ChevronsUpDown className="ml-2 h-4 w-4" />
+          )}
         </button>
       );
     },
@@ -39,15 +49,24 @@ export const columns: ColumnDef<SelectExpense>[] = [
     },
   },
   {
-    accessorKey: "data",
+    accessorKey: "createdAt",
     header: ({ column }) => {
+      const sorted = column.getIsSorted();
       return (
         <button
-          className="flex items-center gap-2 hover:underline"
+          className="flex items-center gap-2 hover:cursor-pointer"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
           Data de criação
-          <ArrowUpDown className="ml-2 h-4 w-4" />
+          {sorted ? (
+            <ChevronUp
+              className={cn("ml-2 h-4 w-4 transition-all", {
+                "rotate-180": sorted === "asc",
+              })}
+            />
+          ) : (
+            <ChevronsUpDown className="ml-2 h-4 w-4" />
+          )}
         </button>
       );
     },
@@ -64,15 +83,24 @@ export const columns: ColumnDef<SelectExpense>[] = [
     },
   },
   {
-    accessorKey: "type",
+    accessorKey: "isUnique",
     header: ({ column }) => {
+      const sorted = column.getIsSorted();
       return (
         <button
-          className="flex items-center gap-2 hover:underline"
+          className="flex items-center gap-2 hover:cursor-pointer"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
           Tipo
-          <ArrowUpDown className="ml-2 h-4 w-4" />
+          {sorted ? (
+            <ChevronUp
+              className={cn("ml-2 h-4 w-4 transition-all", {
+                "rotate-180": sorted === "asc",
+              })}
+            />
+          ) : (
+            <ChevronsUpDown className="ml-2 h-4 w-4" />
+          )}
         </button>
       );
     },
