@@ -107,7 +107,7 @@ export const columns: ColumnDef<SelectExpense>[] = [
     cell: ({ row }) => {
       return (
         <div className="flex gap-4 items-center justify-between">
-          <span>{row.original.isUnique ? "Única" : "Recorrente"}</span>
+          <Badge glow>{row.original.isUnique ? "Única" : "Recorrente"}</Badge>
           <div className="flex items-center gap-2">
             <EditExpense expense={row.original} />
             <DeleteExpense id={row.original.id} />

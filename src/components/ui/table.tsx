@@ -19,21 +19,21 @@ const Table = React.forwardRef<
 
     const variants = {
       glass:
-        "w-full caption-bottom text-sm glass-bg backdrop-blur-[var(--blur-sm)] border border-[var(--glass-border)] rounded-lg overflow-hidden shadow-[var(--glass-shadow-sm)]",
+        "w-full caption-bottom text-sm glass-bg backdrop-blur-[var(--blur-sm)] border border-[var(--glass-border)] rounded-lg shadow-[var(--glass-shadow-sm)]",
       glassSubtle:
-        "w-full caption-bottom text-sm glass-bg backdrop-blur-[var(--blur-sm)] border border-[var(--glass-border)] rounded-lg overflow-hidden shadow-[var(--glass-shadow-sm)] opacity-50",
+        "w-full caption-bottom text-sm glass-bg backdrop-blur-[var(--blur-sm)] border border-[var(--glass-border)] rounded-lg shadow-[var(--glass-shadow-sm)] opacity-50",
       frosted:
-        "w-full caption-bottom text-sm glass-frosted backdrop-blur-[var(--blur-frosted)] border border-[var(--glass-frosted-border)] rounded-lg overflow-hidden shadow-[var(--glass-frosted-shadow)]",
+        "w-full caption-bottom text-sm glass-frosted backdrop-blur-[var(--blur-frosted)] border border-[var(--glass-frosted-border)] rounded-lg shadow-[var(--glass-frosted-shadow)]",
       fluted:
-        "w-full caption-bottom text-sm glass-fluted backdrop-blur-[var(--blur)] border border-[var(--glass-border)] rounded-lg overflow-hidden shadow-[var(--glass-shadow-sm)]",
+        "w-full caption-bottom text-sm glass-fluted backdrop-blur-[var(--blur)] border border-[var(--glass-border)] rounded-lg shadow-[var(--glass-shadow-sm)]",
       crystal:
-        "w-full caption-bottom text-sm glass-crystal backdrop-blur-[var(--blur-crystal)] border border-[var(--glass-crystal-border)] rounded-lg overflow-hidden shadow-[var(--glass-crystal-shadow)]",
+        "w-full caption-bottom text-sm glass-crystal backdrop-blur-[var(--blur-crystal)] border border-[var(--glass-crystal-border)] rounded-lg shadow-[var(--glass-crystal-shadow)]",
     };
     return variants[variant] || variants.glass;
   };
 
   return (
-    <div className={variant !== "default" ? "rounded-lg overflow-hidden" : ""}>
+    <div className={variant !== "default" ? "rounded-lg" : ""}>
       <table
         ref={ref}
         className={cn(getVariantClass(), className)}

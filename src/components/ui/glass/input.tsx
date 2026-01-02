@@ -10,7 +10,6 @@ export interface InputProps extends Omit<
   React.ComponentProps<typeof BaseInput>,
   "glass"
 > {
-  icon?: React.ReactNode;
   error?: boolean;
   hover?: HoverEffect;
   glass?: GlassCustomization;
@@ -34,39 +33,23 @@ export interface InputProps extends Omit<
  */
 export const Input = React.forwardRef<HTMLInputElement, InputProps>(
   (
-    {
-      className,
-      variant = "glass",
-      icon,
-      error,
-      hover = "none",
-      glass,
-      ...props
-    },
+    { className, variant = "glass", error, hover = "none", glass, ...props },
     ref,
   ) => {
     return (
-      <div className="relative">
-        {icon && (
-          <div className="absolute left-3 top-1/2 -translate-y-1/2 z-10 text-muted-foreground pointer-events-none">
-            {icon}
-          </div>
+      <BaseInput
+        ref={ref}
+        variant={variant}
+        glass={glass}
+        className={cn(
+          "relative overflow-hidden",
+          error && "border-destructive focus-visible:ring-destructive",
+          "transition-all duration-200 focus-visible:scale-[1.02]",
+          hoverEffects({ hover }),
+          className,
         )}
-        <BaseInput
-          ref={ref}
-          variant={variant}
-          glass={glass}
-          className={cn(
-            "relative overflow-hidden",
-            icon && "pl-10",
-            error && "border-destructive focus-visible:ring-destructive",
-            "transition-all duration-200 focus-visible:scale-[1.02]",
-            hoverEffects({ hover }),
-            className,
-          )}
-          {...props}
-        />
-      </div>
+        {...props}
+      />
     );
   },
 );

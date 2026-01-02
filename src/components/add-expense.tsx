@@ -67,7 +67,7 @@ export function AddExpense() {
   return (
     <Dialog open={open} onOpenChange={setIsOpen}>
       <DialogTrigger asChild>
-        <Button className="h-10">
+        <Button className="h-10 w-full md:w-auto">
           <PlusIcon className="h-4 w-4" />
           <span className="truncate">Adicionar despesa</span>
         </Button>

@@ -24,8 +24,8 @@ export function ProfileCard() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button className="flex rounded-full items-center gap-2 px-3 h-12">
-          <Avatar>
+        <Button className="flex rounded-full items-center gap-2 h-10 md:h-12 w-10 md:w-auto px-0 md:px-3">
+          <Avatar className="h-10 w-10">
             <AvatarImage
               src={session?.user.image as string}
               alt={session?.user.name.slice(0, 1)}
@@ -33,9 +33,9 @@ export function ProfileCard() {
             <AvatarFallback>{session?.user.name?.charAt(0)}</AvatarFallback>
           </Avatar>
           {isPending ? (
-            <Skeleton className="h-5 w-20 rounded-md" />
+            <Skeleton className="hidden md:block h-5 w-20 rounded-md" />
           ) : (
-            <span className="text-md">{session?.user?.name}</span>
+            <span className="hidden md:block text-md">{session?.user?.name}</span>
           )}
         </Button>
       </DropdownMenuTrigger>

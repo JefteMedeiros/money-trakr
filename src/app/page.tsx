@@ -30,11 +30,11 @@ export default async function Page(props: {
 
   return (
     <div className="min-h-dvh w-full bg-zinc-900">
-      <header className="pt-12 pb-24 bg-zinc-900">
-        <div className="flex items-center justify-between max-w-[90%] xl:max-w-315 w-full mx-auto">
+      <header className="pt-6 md:pt-12 pb-16 md:pb-24 bg-zinc-900">
+        <div className="flex items-center justify-between max-w-[90%] xl:max-w-315 w-full mx-auto gap-2">
           <Logo />
           <Suspense fallback={<ProfileCardSkeleton />}>
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-1 md:gap-2">
               <ModeToggle />
               <ProfileCard />
             </div>
@@ -42,7 +42,7 @@ export default async function Page(props: {
         </div>
       </header>
       <ExpenseStats totalExpenses={expenses} />
-      <main className="max-w-[90%] xl:max-w-315 mx-auto mt-20">
+      <main className="max-w-[90%] xl:max-w-315 mx-auto mt-16 md:mt-20 mb-8">
         <Suspense key={queryParams} fallback={<ExpenseTableSkeleton />}>
           <ExpenseTable queryParams={queryParams} />
         </Suspense>
