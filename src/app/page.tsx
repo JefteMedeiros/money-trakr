@@ -1,6 +1,6 @@
 import { Suspense } from "react";
 import { getExpenseList } from "@/actions/get_expense_list";
-import { ExpenseResume } from "@/components/expense-resume";
+import { ExpenseStats } from "@/components/expense-resume";
 import { ExpenseTable } from "@/components/expense-table";
 import { Logo } from "@/components/logo";
 import { ProfileCard } from "@/components/profile-card";
@@ -41,8 +41,8 @@ export default async function Page(props: {
           </Suspense>
         </div>
       </header>
-      <ExpenseResume totalExpenses={expenses} />
-      <main className="max-w-[90%] xl:max-w-315 mx-auto mt-16">
+      <ExpenseStats totalExpenses={expenses} />
+      <main className="max-w-[90%] xl:max-w-315 mx-auto mt-20">
         <Suspense key={queryParams} fallback={<ExpenseTableSkeleton />}>
           <ExpenseTable queryParams={queryParams} />
         </Suspense>

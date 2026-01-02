@@ -20,7 +20,7 @@ interface Props {
   handlePlannedExpenses: (value: number) => void;
 }
 
-export function PlannedExpenses({
+export function EditPlannedExpenses({
   plannedExpenses,
   handlePlannedExpenses,
 }: Props) {
@@ -53,10 +53,10 @@ export function PlannedExpenses({
 
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
-      <DialogTrigger asChild>
-        <button>
-          <Pencil className="text-purple-400" />
-        </button>
+      <DialogTrigger /*className="bg-foreground/10 rounded-full p-2"*/ asChild>
+        <Button className="rounded-full h-8 w-8">
+          <Pencil className="h-4 w-4" />
+        </Button>
       </DialogTrigger>
       <DialogContent className="bg-gray-800 max-w-[90%] xl:max-w-lg text-white border-none">
         <DialogHeader className="items-start">

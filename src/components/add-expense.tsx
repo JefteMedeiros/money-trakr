@@ -18,6 +18,7 @@ import {
 } from "@/components/ui/glass/dialog";
 import { Button } from "@/components/ui/glass/button";
 import { generateExpenseExampleMessage } from "@/lib/utils";
+import { PlusIcon } from "lucide-react";
 
 const initialState = {
   message: "",
@@ -66,7 +67,8 @@ export function AddExpense() {
   return (
     <Dialog open={open} onOpenChange={setIsOpen}>
       <DialogTrigger asChild>
-        <Button>
+        <Button className="h-10">
+          <PlusIcon className="h-4 w-4" />
           <span className="truncate">Adicionar despesa</span>
         </Button>
       </DialogTrigger>

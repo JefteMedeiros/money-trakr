@@ -49,7 +49,7 @@ export function DataTable<TData, TValue>({
   });
 
   return (
-    <div className="rounded-md">
+    <div className="rounded-md space-y-3.5">
       <TableFilters />
       <Table className="text-white">
         <TableHeader>

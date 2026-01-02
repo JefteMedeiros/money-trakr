@@ -24,7 +24,7 @@ export function ProfileCard() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button className="flex items-center gap-2 px-3 h-12">
+        <Button className="flex rounded-full items-center gap-2 px-3 h-12">
           <Avatar>
             <AvatarImage
               src={session?.user.image as string}

@@ -38,9 +38,9 @@ export function DeleteExpense({ id }: Props) {
   return (
     <AlertDialog open={isOpen} onOpenChange={setIsOpen}>
       <AlertDialogTrigger asChild>
-        <button>
-          <Trash className="text-purple-400" size={16} />
-        </button>
+        <Button className="w-10 h-10 rounded-full" variant="ghost">
+          <Trash />
+        </Button>
       </AlertDialogTrigger>
       <AlertDialogContent className="bg-gray-800 max-w-[90%] xl:max-w-lg text-white border-none">
         <AlertDialogHeader className="items-start">
@@ -49,21 +49,18 @@ export function DeleteExpense({ id }: Props) {
             Tem certeza que deseja deletar esta despesa?
           </AlertDialogDescription>
         </AlertDialogHeader>
-        <AlertDialogFooter>
+        <AlertDialogFooter className="flex items-center w-full">
           <AlertDialogCancel
             onClick={() => {
               setIsOpen(!isOpen);
             }}
             asChild
           >
-            <Button
-              className="border-purple-400 w-full border hover:text-white"
-              variant="outline"
-            >
+            <Button variant="outline" className="w-1/2">
               Não
             </Button>
           </AlertDialogCancel>
-          <form id="delete_expense" className="w-full" action={formAction}>
+          <form id="delete_expense" className="w-1/2" action={formAction}>
             <SubmitButtonAction id="delete_expense" text="Sim" />
           </form>
         </AlertDialogFooter>

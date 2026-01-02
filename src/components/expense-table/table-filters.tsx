@@ -42,57 +42,60 @@ export function TableFilters() {
   const type = searchParams.get("type");
 
   return (
-    <div className="flex items-center gap-2 py-4">
-      <Input
-        placeholder="Filtrar por nome"
-        value={searchByName}
-        onChange={handleSearchByName}
-      />
-      <Select
-        value={category ?? ""}
-        onValueChange={(value) => {
-          value === "all"
-            ? searchParams.delete("category")
-            : searchParams.set("category", value);
+    <div className="flex items-center justify-between gap-2">
+      <div className="flex items-center gap-2">
+        <Input
+          className="min-w-48 h-10"
+          placeholder="Filtrar por nome"
+          value={searchByName}
+          onChange={handleSearchByName}
+        />
+        <Select
+          value={category ?? ""}
+          onValueChange={(value) => {
+            value === "all"
+              ? searchParams.delete("category")
+              : searchParams.set("category", value);
 
-          router.replace(`${path}?${searchParams.toString()}`);
-        }}
-        defaultValue="all"
-      >
-        <SelectTrigger className="w-1/4">
-          <SelectValue placeholder="Filtrar por categoria" />
-        </SelectTrigger>
-        <SelectContent>
-          <SelectItem value="all">Todos</SelectItem>
-          <SelectItem value="other">Outros</SelectItem>
-          <SelectItem value="entertainment">Entretenimento</SelectItem>
-          <SelectItem value="food">Alimentação</SelectItem>
-          <SelectItem value="transport">Transporte</SelectItem>
-          <SelectItem value="housing">Moradia</SelectItem>
-          <SelectItem value="health">Saúde</SelectItem>
-          <SelectItem value="education">Educação</SelectItem>
-        </SelectContent>
-      </Select>
-      <Select
-        value={type ?? ""}
-        onValueChange={(value) => {
-          value === "all"
-            ? searchParams.delete("type")
-            : searchParams.set("type", value);
+            router.replace(`${path}?${searchParams.toString()}`);
+          }}
+          defaultValue="all"
+        >
+          <SelectTrigger className="h-10">
+            <SelectValue placeholder="Filtrar por categoria" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="all">Todos</SelectItem>
+            <SelectItem value="other">Outros</SelectItem>
+            <SelectItem value="entertainment">Entretenimento</SelectItem>
+            <SelectItem value="food">Alimentação</SelectItem>
+            <SelectItem value="transport">Transporte</SelectItem>
+            <SelectItem value="housing">Moradia</SelectItem>
+            <SelectItem value="health">Saúde</SelectItem>
+            <SelectItem value="education">Educação</SelectItem>
+          </SelectContent>
+        </Select>
+        <Select
+          value={type ?? ""}
+          onValueChange={(value) => {
+            value === "all"
+              ? searchParams.delete("type")
+              : searchParams.set("type", value);
 
-          router.replace(`${path}?${searchParams.toString()}`);
-        }}
-        defaultValue="all"
-      >
-        <SelectTrigger className="w-1/4">
-          <SelectValue placeholder="Filtrar por tipo" />
-        </SelectTrigger>
-        <SelectContent>
-          <SelectItem value="all">Todas</SelectItem>
-          <SelectItem value="unique">Despesa única</SelectItem>
-          <SelectItem value="recurring">Despesa recorrente</SelectItem>
-        </SelectContent>
-      </Select>
+            router.replace(`${path}?${searchParams.toString()}`);
+          }}
+          defaultValue="all"
+        >
+          <SelectTrigger className="h-10">
+            <SelectValue placeholder="Filtrar por tipo" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="all">Todas</SelectItem>
+            <SelectItem value="unique">Despesa única</SelectItem>
+            <SelectItem value="recurring">Despesa recorrente</SelectItem>
+          </SelectContent>
+        </Select>
+      </div>
       <AddExpense />
     </div>
   );

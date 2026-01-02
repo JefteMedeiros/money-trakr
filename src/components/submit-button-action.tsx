@@ -14,10 +14,11 @@ export function SubmitButtonAction({ text = "Enviar", id }: Props) {
 
   return (
     <Button
+      variant="destructive"
       form={id}
+      className="w-full"
       disabled={pending}
       aria-disabled={pending}
-      className="w-full flex items-center gap-2"
       type="submit"
     >
       {text}

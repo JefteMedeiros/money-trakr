@@ -19,6 +19,7 @@ import type { SelectExpense } from "@/db/schemas/expenses";
 import { generateExpenseExampleMessage } from "@/lib/utils";
 import { SubmitButton } from "./submit-button";
 import { Form } from "./ui/form";
+import { Button } from "./ui/glass/button";
 
 interface Props {
   expense: SelectExpense;
@@ -73,9 +74,9 @@ export function EditExpense({ expense }: Props) {
   return (
     <Dialog open={open} onOpenChange={setIsOpen}>
       <DialogTrigger asChild>
-        <button>
-          <Pencil className="text-purple-400" size={16} />
-        </button>
+        <Button className="w-10 h-10 rounded-full" variant="ghost">
+          <Pencil />
+        </Button>
       </DialogTrigger>
       <DialogContent className="bg-gray-800 max-w-[90%] xl:max-w-lg text-white border-none">
         <DialogHeader className="items-start">
