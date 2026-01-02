@@ -14,7 +14,7 @@ interface Props {
 export function SingleSignOn({ provider }: Props) {
   return (
     <Button
-      className="gap-2 hover:cursor-pointer"
+      className="gap-2 w-full hover:cursor-pointer h-12 text-base"
       key={provider.id}
       onClick={async () => {
         await authClient.signIn.social({ provider: provider.id });
@@ -26,7 +26,7 @@ export function SingleSignOn({ provider }: Props) {
         width={24}
         height={24}
       />
-      <span>Entrar com {provider.name}</span>
+      <span>{provider.name}</span>
     </Button>
   );
 }
