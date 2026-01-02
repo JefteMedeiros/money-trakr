@@ -43,11 +43,11 @@ export default async function Page(props: {
         </div>
       </header>
       <ExpenseResume totalExpenses={expenses} />
-      {/*<main className="max-w-[90%] xl:max-w-[1260px] mx-auto mt-16">
+      <main className="max-w-[90%] xl:max-w-[1260px] mx-auto mt-16">
         <Suspense key={queryParams} fallback={<ExpenseTableSkeleton />}>
           <ExpenseTable queryParams={queryParams} />
         </Suspense>
-      </main>*/}
+      </main>
     </div>
   );
 }

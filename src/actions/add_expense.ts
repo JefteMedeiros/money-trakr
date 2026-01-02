@@ -31,8 +31,6 @@ export async function addExpense(prevState: any, formData: Expense) {
     userId: session.user.id,
   };
 
-  console.log(data);
-
   await db.insert(expenses).values(data);
 
   revalidatePath("/");

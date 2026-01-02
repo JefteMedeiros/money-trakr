@@ -17,6 +17,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/glass/dialog";
 import { Button } from "@/components/ui/glass/button";
+import { generateExpenseExampleMessage } from "@/lib/utils";
 
 const initialState = {
   message: "",
