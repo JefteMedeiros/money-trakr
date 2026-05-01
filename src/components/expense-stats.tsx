@@ -1,11 +1,11 @@
 "use client";
 
-import { useLocalStorage } from "usehooks-ts";
-import type { SelectExpense } from "@/db/schemas/expenses";
-import { EditPlannedExpenses } from "./planned-expenses";
-import { Card, CardContent } from "@/components/ui/glass/card";
-import { cn, moneyFormatter } from "@/lib/utils";
 import { TrendingDown, TrendingUp, Wallet2 } from "lucide-react";
+import { useLocalStorage } from "usehooks-ts";
+import { Card, CardContent } from "@/components/ui/glass/card";
+import type { SelectExpense } from "@/db/schemas/expenses";
+import { cn, moneyFormatter } from "@/lib/utils";
+import { EditPlannedExpenses } from "./planned-expenses";
 import { Button } from "./ui/glass/button";
 
 interface Props {
@@ -29,6 +29,8 @@ export function ExpenseStats({ totalExpenses }: Props) {
   );
 
   const remainingValue = plannedExpenseValue - totalSpent;
+
+  const hasPlannedExpenseValue = plannedExpenseValue > 0;
 
   return (
     <nav className="snap-x snap-mandatory flex gap-4 max-w-[90%] xl:max-w-315 -my-12 mx-auto overflow-auto md:overflow-visible custom-scroll">
@@ -62,16 +64,18 @@ export function ExpenseStats({ totalExpenses }: Props) {
           <div className="space-y-1">
             <p
               className={cn("font-bold text-2xl md:text-3xl", {
-                "text-green-500": totalSpent > plannedExpenseValue / 3,
+                "text-emerald-500": totalSpent > plannedExpenseValue / 3,
                 "text-red-500": totalSpent > plannedExpenseValue,
               })}
             >
               {moneyFormatter(totalSpent)}
             </p>
-            <p className="text-xs text-muted-foreground">
-              {((totalSpent / plannedExpenseValue) * 100).toFixed(1)}% do
-              planejado
-            </p>
+            {hasPlannedExpenseValue && (
+              <p className="text-xs text-muted-foreground">
+                {((totalSpent / plannedExpenseValue) * 100).toFixed(1)}% do
+                planejado
+              </p>
+            )}
           </div>
         </CardContent>
       </Card>
@@ -92,10 +96,12 @@ export function ExpenseStats({ totalExpenses }: Props) {
             >
               {moneyFormatter(remainingValue)}
             </h2>
-            <p className="text-xs text-muted-foreground">
-              {((remainingValue / plannedExpenseValue) * 100).toFixed(1)}%
-              disponível
-            </p>
+            {hasPlannedExpenseValue && (
+              <p className="text-xs text-muted-foreground">
+                {((remainingValue / plannedExpenseValue) * 100).toFixed(1)}%
+                disponível
+              </p>
+            )}
           </div>
         </CardContent>
       </Card>
