@@ -70,7 +70,7 @@ function FilterControls() {
         }}
         defaultValue="all"
       >
-        <SelectTrigger className="h-10">
+        <SelectTrigger className="h-10 min-w-45">
           <SelectValue placeholder="Filtrar por categoria" />
         </SelectTrigger>
         <SelectContent>
