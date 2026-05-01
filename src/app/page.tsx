@@ -30,7 +30,6 @@ export default async function Page(props: {
 
   return (
     <div className="min-h-dvh w-full relative">
-      {/* Background with blur */}
       <div className="fixed inset-0 -z-10 bg-[url('/bg-shape-light.png')] dark:bg-[url('/bg-shape.png')] bg-cover bg-center bg-no-repeat blur-3xl" />
 
       <header className="pt-6 md:pt-12 pb-16 md:pb-24">

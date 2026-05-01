@@ -6,6 +6,7 @@ import { EditPlannedExpenses } from "./planned-expenses";
 import { Card, CardContent } from "@/components/ui/glass/card";
 import { cn, moneyFormatter } from "@/lib/utils";
 import { TrendingDown, TrendingUp, Wallet2 } from "lucide-react";
+import { Button } from "./ui/glass/button";
 
 interface Props {
   totalExpenses: SelectExpense[];
@@ -36,9 +37,9 @@ export function ExpenseStats({ totalExpenses }: Props) {
           <div className="flex items-center justify-between w-full">
             <p className="text-sm text-muted-foreground">Total planejado</p>
             <div className="flex items-center gap-2">
-              <div className="rounded-full bg-foreground/10 p-2">
+              <Button className="rounded-full h-8 w-8 pointer-events-none">
                 <Wallet2 className="h-4 w-4 text-foreground" />
-              </div>
+              </Button>
               <EditPlannedExpenses
                 handlePlannedExpenses={handlePlannedExpenses}
                 plannedExpenses={plannedExpenseValue}

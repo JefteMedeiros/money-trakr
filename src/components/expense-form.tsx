@@ -97,7 +97,7 @@ export function ExpenseForm() {
                 onCheckedChange={field.onChange}
               />
             </FormControl>
-            <FormLabel className="text-white">Despesa única</FormLabel>
+            <FormLabel className="dark:text-white">Despesa única</FormLabel>
             <FormMessage />
           </FormItem>
         )}

@@ -4,6 +4,7 @@ import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
 import { SingleSignOn } from "@/components/single-sign-on";
 import { Separator } from "@/components/ui/glass/separator";
+import { ModeToggle } from "@/components/mode-toggle";
 
 export default async function SignIn() {
   const session = await auth.api.getSession({
@@ -14,7 +15,9 @@ export default async function SignIn() {
 
   return (
     <main className="w-screen h-screen flex flex-col justify-center items-center relative">
-      {/* Background with blur */}
+      <div className="absolute top-4 right-4">
+        <ModeToggle />
+      </div>
       <div className="fixed inset-0 -z-10 bg-[url('/bg-shape-light.png')] dark:bg-[url('/bg-shape.png')] bg-cover bg-center bg-no-repeat blur-3xl" />
 
       <div className="max-w-80 w-full">

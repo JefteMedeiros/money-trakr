@@ -53,7 +53,7 @@ export function EditPlannedExpenses({
 
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
-      <DialogTrigger /*className="bg-foreground/10 rounded-full p-2"*/ asChild>
+      <DialogTrigger asChild>
         <Button className="rounded-full h-8 w-8">
           <Pencil className="h-4 w-4" />
         </Button>
@@ -69,11 +69,10 @@ export function EditPlannedExpenses({
           type="number"
           defaultValue={plannedExpenses}
           onChange={handleChangeValue}
-          className="bg-gray-900 h-12 border-none focus-visible:ring-offset-1 focus-visible:ring-2 focus-visible:ring-offset-gray-800  focus-visible:ring-purple-400"
         />
         <Button
           onClick={handleSavePlannedExpenses}
-          className="w-full h-12"
+          className="w-full"
           type="submit"
         >
           Salvar

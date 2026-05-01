@@ -3,30 +3,32 @@
 import Image from "next/image";
 import { Button } from "@/components/ui/glass/button";
 import { authClient } from "@/lib/auth-client";
+import { cn } from "@/lib/utils";
 
 interface Props {
-  provider: {
-    id: string;
-    name: string;
-  };
+	provider: {
+		id: string;
+		name: string;
+	};
 }
 
 export function SingleSignOn({ provider }: Props) {
-  return (
-    <Button
-      className="gap-2 w-full hover:cursor-pointer h-12 text-base"
-      key={provider.id}
-      onClick={async () => {
-        await authClient.signIn.social({ provider: provider.id });
-      }}
-    >
-      <Image
-        src={`https://authjs.dev/img/providers/${provider.id}.svg`}
-        alt={`${provider.name}`}
-        width={24}
-        height={24}
-      />
-      <span>{provider.name}</span>
-    </Button>
-  );
+	return (
+		<Button
+			className="gap-2 w-full hover:cursor-pointer h-12 text-base"
+			key={provider.id}
+			onClick={async () => {
+				await authClient.signIn.social({ provider: provider.id });
+			}}
+		>
+			<Image
+				src={`https://authjs.dev/img/providers/${provider.id}.svg`}
+				alt={`${provider.name}`}
+				width={24}
+				height={24}
+				className={cn(provider.id === "github" && "dark:invert")}
+			/>
+			<span>{provider.name}</span>
+		</Button>
+	);
 }
