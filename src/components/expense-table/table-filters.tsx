@@ -123,7 +123,8 @@ export function TableFilters() {
           </Button>
         </SheetTrigger>
         <SheetContent>
-          <div className="flex flex-col gap-2">
+          <SheetTitle>Filtros</SheetTitle>
+          <div className="flex mt-4 flex-col gap-2">
             <FilterControls />
           </div>
         </SheetContent>
